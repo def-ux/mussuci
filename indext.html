@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MUSENAS SUCI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color-1: #e25876;
+            --bg-color-2: #9b1c31;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #222; /* Dark background for desktop viewing */
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Mobile App Container */
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: radial-gradient(circle at center, var(--bg-color-1), var(--bg-color-2));
+            color: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+        }
+
+        /* Section Handling */
+        .section {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            padding: 24px;
+            text-align: center;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .section.active {
+            display: flex;
+            opacity: 1;
+            z-index: 10;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Typography Utilities */
+        .font-cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Custom Animation for Cake */
+        .pulse-soft {
+            animation: pulseSoft 2s infinite alternate;
+        }
+        @keyframes pulseSoft {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Photo Heart Arrangement */
+        .photo-placeholder {
+            width: 45px;
+            height: 45px;
+            background-color: white;
+            border: 3px solid white;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            font-size: 20px;
+            color: #ddd;
+        }
+        
+        /* Floating Clouds Animation */
+        @keyframes floatCloud {
+            0% { transform: translateX(-10px) translateY(0); }
+            50% { transform: translateX(10px) translateY(-5px); }
+            100% { transform: translateX(-10px) translateY(0); }
+        }
+        .cloud-anim {
+            animation: floatCloud 6s infinite ease-in-out;
+        }
+
+        /* Audio UI Elements */
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        .progress-bar-fill {
+            width: 35%;
+            height: 100%;
+            background: #e25876;
+        }
+
+        /* UI Navigation Icons */
+        .nav-icon {
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: background 0.3s, transform 0.2s;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        .nav-icon:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- 1. Home Section -->
+        <div id="home" class="section active">
+            <h1 class="font-cursive text-6xl mb-4 drop-shadow-md"> Museum nasional <br> With <span class="text-3xl">💕</span></h1>
+            <h2 class="text-3xl font-bold tracking-widest uppercase mb-12 drop-shadow-sm">Suci Maysela Anjelia</h2>
+            
+            <div onclick="navigate('menu')" class="text-[100px] drop-shadow-2xl cursor-pointer pulse-soft hover:scale-110 transition-transform mb-6" style="filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.4));">
+                🏛️
+            </div>
+            
+            <p class="text-sm italic opacity-90 mt-4">*halooo sayangkuu.., boleh di klik logo museum nya yaa*</p>
+        </div>
+
+        <!-- 2. Menu Section -->
+        <div id="menu" class="section">
+            <h2 class="text-3xl mb-16 leading-snug drop-shadow-sm">Sayanggkuuu<br>aku buat dokumentasian dari monumen nya disini yaa hehe, kamu bisa klik ikon nya </h2>
+            
+            <div class="flex flex-row justify-center items-center gap-6 mb-16 w-full px-4">
+                <div class="flex flex-col items-center cursor-pointer hover:-translate-y-2 transition-transform w-1/3" onclick="navigate('surat')">
+                    <div class="text-[50px] mb-3 drop-shadow-lg">💌</div>
+                    <p class="text-lg tracking-wide">Surat</p>
+                </div>
+                
+                <div class="flex flex-col items-center cursor-pointer hover:-translate-y-2 transition-transform w-1/3" onclick="navigate('bunga')">
+                    <div class="text-[50px] mb-3 drop-shadow-lg">💐</div>
+                    <p class="text-lg tracking-wide">Bunga</p>
+                </div>
+                
+                <div class="flex flex-col items-center cursor-pointer hover:-translate-y-2 transition-transform w-1/3" onclick="navigate('foto')">
+                    <div class="text-[50px] mb-3 drop-shadow-lg">📷</div>
+                    <p class="text-lg tracking-wide">Foto</p>
+                </div>
+            </div>
+
+            <div class="absolute bottom-12 flex">
+                <div class="nav-icon" onclick="navigate('home')" title="Home">🔄</div>
+            </div>
+        </div>
+
+        <!-- 3. Surat Section -->
+        <div id="surat" class="section">
+            <!-- Decorative Header -->
+            <div class="absolute top-16 w-full flex justify-center items-center px-6">
+                <span class="text-4xl cloud-anim opacity-90">☁️</span>
+                <!-- Hanging Polaroids line -->
+                <div class="w-48 h-[2px] bg-white/40 mx-2 relative flex justify-around">
+                    <div class="w-5 h-6 bg-gray-200 border border-white absolute -top-1 rotate-[-10deg]" style="left: 10%;"></div>
+                    <div class="w-5 h-6 bg-gray-200 border border-white absolute top-1 rotate-[5deg]" style="left: 35%;"></div>
+                    <div class="w-5 h-6 bg-gray-200 border border-white absolute -top-2 rotate-[-15deg]" style="left: 60%;"></div>
+                    <div class="w-5 h-6 bg-gray-200 border border-white absolute top-0 rotate-[10deg]" style="left: 85%;"></div>
+                </div>
+                <span class="text-4xl cloud-anim opacity-90" style="animation-delay: 2s;">☁️</span>
+            </div>
+
+            <!-- Torn Paper Container -->
+            <div class="bg-[#fdfbf7] text-[#333] w-[85%] max-w-[320px] mt-12 p-8 rounded-md shadow-2xl relative z-10" style="border-radius: 5px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);">
+                <!-- Tape effect top center -->
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-16 h-6 bg-white/60 shadow-sm backdrop-blur-sm rotate-[-2deg]"></div>
+                
+                <h3 class="font-cursive text-4xl mb-4 text-center">aku mencintaimu</h3>
+                
+                <p class="text-sm leading-relaxed text-justify mb-6" style="font-family: 'Playfair Display', serif;">
+                    kubiarkan diriku begitu saja, wahai pemilik senyum yang mengacaukan segala isi dada,akan ku bertanya pada dirimu, biarkan aku menggilaimu sebagaimana majnun mendambakan layla, dan biarkan aku gilang arah dimatamu, sebab tak ada sesat yang ingin kutemuh selain jalan pulang menuju namamu
+                </p>
+
+                <audio id="musikSurat" src="Mozart Symphony No. 40 - DAVID BAY - MOZART 40 [wEFAFcp4lf4].mp3"></audio>
+
+<!-- Audio Player UI yang sudah berfungsi -->
+<div class="flex items-center bg-gray-100 p-3 rounded-full shadow-inner mt-4">
+    <div id="tombolPlay" class="text-lg cursor-pointer text-[#e25876] pl-1" onclick="putarMusik()">▶️</div>
+    <span class="text-xs text-gray-500 font-sans ml-2">0:00</span>
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill"></div>
+    </div>
+    <span class="text-xs text-gray-500 font-sans">0:30</span>
+</div>
+            </div>
+
+            <div class="absolute bottom-12 flex">
+                <div class="nav-icon" onclick="navigate('home')" title="Refresh">🔄</div>
+                <div class="nav-icon" onclick="navigate('menu')" title="Back">↩️</div>
+            </div>
+        </div>
+
+        <!-- 4. Bunga Section -->
+        <div id="bunga" class="section">
+            
+            <!-- Bouquet and Polaroids -->
+            <div class="relative w-full h-[300px] flex justify-center items-center mt-10">
+                <!-- Floating Polaroids Behind/Above Bouquet -->
+                <div class="w-16 h-20 bg-white p-1 pb-4 shadow-xl absolute -top-4 left-[20%] rotate-[-20deg] z-0 text-center"><img src="tulang gajah.jpeg" alt=""></div>
+                <div class="w-16 h-20 bg-white p-1 pb-4 shadow-xl absolute -top-8 left-[45%] rotate-[5deg] z-0 text-center"><img src="resepsionis.jpeg" alt=""></div>
+                <div class="w-16 h-20 bg-white p-1 pb-4 shadow-xl absolute -top-2 left-[65%] rotate-[25deg] z-0 text-center"><img src="tempat sayur.jpeg" alt=""></div>
+
+                <div class="text-[140px] relative z-10 drop-shadow-2xl mt-12 pulse-soft" style="filter: drop-shadow(0px 20px 10px rgba(0,0,0,0.5));">💐</div>
+            </div>
+
+            <h2 class="font-serif text-3xl mt-8 tracking-wider text-center drop-shadow-md z-10">FLOWER<br>For Suci Maysela Anjelia</h2>
+
+            <div class="absolute bottom-12 flex">
+                <div class="nav-icon" onclick="navigate('home')" title="Refresh">🔄</div>
+                <div class="nav-icon" onclick="navigate('menu')" title="Back">↩️</div>
+            </div>
+        </div>
+
+        <!-- 5. Foto Section -->
+        <div id="foto" class="section">
+            <h2 class="font-serif text-3xl mb-8 tracking-wider drop-shadow-md absolute top-16">MY FAVORIT PERSON</h2>
+
+            <!-- Heart Shaped Photo Collage -->
+            <div class="relative w-[300px] h-[300px] mt-16">
+                <!-- Left half of heart -->
+                <div class="photo-placeholder rotate-[-10deg]" style="top: 40px; left: 50px;"><div><img src="dewi berpedang.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[5deg]" style="top: 20px; left: 100px;"><div><img src="foto lukisan.jpeg" alt=""></div></div>
+                
+                <div class="photo-placeholder rotate-[-15deg]" style="top: 90px; left: 20px;"><div><img src="depan tulang gajah.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[10deg]" style="top: 150px; left: 40px;"><div><img src="tangga oren.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[-5deg]" style="top: 200px; left: 80px;"><div><img src="semai.jpeg" alt=""></div></div>
+                
+                <!-- Bottom Tip -->
+                <div class="photo-placeholder rotate-[0deg]" style="top: 240px; left: 125px;"><div><img src="kepala banteng.jpeg" alt=""></div></div>
+                
+                <!-- Right half of heart -->
+                <div class="photo-placeholder rotate-[10deg]" style="top: 40px; left: 200px;"><div><img src="tangga putih 1.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[-5deg]" style="top: 20px; left: 155px;"><div><img src="kaca di lantai bawah.jpeg" alt=""></div></div>
+                
+                <div class="photo-placeholder rotate-[15deg]" style="top: 90px; left: 235px;"><div><img src="resepsionis.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[-10deg]" style="top: 150px; left: 215px;"><div><img src="depan kain tenun.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[5deg]" style="top: 200px; left: 175px;"><div><img src="tangga putih 2.jpeg" alt=""></div></div>
+                
+                <!-- Center fills -->
+                <div class="photo-placeholder rotate-[-8deg]" style="top: 80px; left: 75px;"><div><img src="perahu.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[12deg]" style="top: 80px; left: 180px;"><div><img src="depan patung dewa.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[2deg]" style="top: 100px; left: 130px;"><div><img src="tulang gajah.jpeg" alt=""></div></div>
+                <div class="photo-placeholder rotate-[-4deg]" style="top: 150px; left: 130px;"><div><img src="tempat sayur.jpeg" alt=""></div></div>
+            </div>
+
+            <div class="absolute bottom-12 flex">
+                <div class="nav-icon" onclick="navigate('home')" title="Refresh">🔄</div>
+                <div class="nav-icon" onclick="navigate('menu')" title="Back">↩️</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /**
+         * Navigates between different sections of the app
+         * @param {string} targetSectionId - The ID of the section to show
+         */
+        function navigate(targetSectionId) {
+            // Get all sections
+            const sections = document.querySelectorAll('.section');
+            
+            // Remove active class from all
+            sections.forEach(sec => {
+                sec.classList.remove('active');
+            });
+            
+            // Add active class to target
+            const targetSection = document.getElementById(targetSectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+    </script>
+    <script>
+  // Mengambil elemen musik dan tombol dari HTML
+  const lagu = document.getElementById("musikSurat");
+  const tombol = document.getElementById("tombolPlay");
+
+  // Fungsi untuk menyalakan dan mematikan musik
+  function putarMusik() {
+    if (lagu.paused) {
+      lagu.play(); // Putar musik
+      tombol.innerHTML = "⏸️"; // Ubah ikon menjadi Pause
+    } else {
+      lagu.pause(); // Hentikan musik sementara
+      tombol.innerHTML = "▶️"; // Kembalikan ikon menjadi Play
+    }
+  }
+</script>
+</body>
+</html>
